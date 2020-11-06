@@ -1,3 +1,30 @@
 main {
 	min-height: 80vh;
 }
+
+/* Rating */
+
+.rating {
+	font-size: 1.2rem;
+	position: relative;
+	display: inline-block;
+}
+
+.rating-upper {
+	position: absolute;
+	overflow: hidden;
+	z-index: 1;
+	color: #fdcc0d;
+}
+
+.rating-lower {
+	z-index: 0;
+	color: #b3b3b3;
+}
+
+.review-count {
+	display: inline;
+	padding-left: 0.2rem;
+	font-style: italic;
+	font-size: 0.8em;
+}
