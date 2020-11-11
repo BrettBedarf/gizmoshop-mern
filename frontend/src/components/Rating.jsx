@@ -8,7 +8,7 @@ const Rating = ({ rating, reviewCount }) => {
 				<div
 					className='rating-upper'
 					style={{
-						width: (rating / 5) * 100,
+						width: `${(rating / 5) * 100}%`,
 					}}
 				>
 					<span>★</span>

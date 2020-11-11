@@ -5,11 +5,19 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Attach to Chrome",
+			"url": "http://localhost:3000",
+			"request": "attach",
+			"type": "pwa-chrome",
+			"webRoot": "${workspaceFolder}/frontend/src"
+		},
+		{
 			"name": "Chrome",
 			"type": "chrome",
 			"request": "launch",
 			"url": "http://localhost:3000",
-			"webRoot": "${workspaceRoot}/src"
+			"webRoot": "${workspaceRoot}/src",
+			"userDataDir": "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir"
 		}
 	]
 }
