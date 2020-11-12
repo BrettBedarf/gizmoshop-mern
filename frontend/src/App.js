@@ -14,7 +14,6 @@ function App() {
 				<Container>
 					<Route path='/' component={HomeScreen} exact />
 					<Route path='/Product/:id' component={ProductScreen} />
-					<HomeScreen />
 				</Container>
 			</main>
 			<Footer />
