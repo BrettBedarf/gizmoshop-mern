@@ -18,6 +18,17 @@
 			"url": "http://localhost:3000",
 			"webRoot": "${workspaceRoot}/src",
 			"userDataDir": "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir"
+		},
+		{
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"name": "nodemon",
+			"program": "${workspaceFolder}/backend/server.js",
+			"request": "launch",
+			"restart": true,
+			"runtimeExecutable": "nodemon",
+			"skipFiles": ["<node_internals>/**"],
+			"type": "pwa-node"
 		}
 	]
 }
