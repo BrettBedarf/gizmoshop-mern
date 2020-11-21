@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
+import { Row, Col, Image, ListGroup, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import products from '../products';
 import QuantitySelector from '../components/QuantitySelector';
@@ -8,6 +8,7 @@ import QuantitySelector from '../components/QuantitySelector';
 const ProductScreen = ({ match }) => {
 	const product = products.find(p => p._id === match.params.id);
 	const [quantity, setQuantity] = useState(1);
+	let inStock = product.countInStock === 0 ? false : true;
 
 	return (
 		<>
@@ -31,13 +32,23 @@ const ProductScreen = ({ match }) => {
 						<ListGroup.Item>${product.price}</ListGroup.Item>
 						<ListGroup.Item>{product.description}</ListGroup.Item>
 						<ListGroup.Item>
-							<QuantitySelector
-								currentQuantity={quantity}
-								setQuantity={setQuantity}
-							/>
+							{/* Conditionally display quantity selector or out of stock */}
+							{!inStock ? (
+								<span style={{ color: 'red' }}>
+									Out of Stock!
+								</span>
+							) : (
+								<QuantitySelector
+									currentQuantity={quantity}
+									setQuantity={setQuantity}
+								/>
+							)}
 						</ListGroup.Item>
 						<ListGroup.Item>
-							<Button block> Add To Cart</Button>
+							<Button block disabled={!inStock ? true : false}>
+								{' '}
+								Add To Cart
+							</Button>
 						</ListGroup.Item>
 					</ListGroup>
 				</Col>

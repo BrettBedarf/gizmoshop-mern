@@ -15,7 +15,8 @@ const Header = () => {
 						<Nav className='ml-auto'>
 							<LinkContainer to='/login'>
 								<Nav.Link>
-									<i className='fas fa-user'></i>
+									<i className='fas fa-user'></i> &nbsp;Sign
+									In
 								</Nav.Link>
 							</LinkContainer>
 							<LinkContainer to='/cart'>
@@ -23,7 +24,8 @@ const Header = () => {
 									<i
 										className='fa fa-shopping-cart'
 										aria-hidden='true'
-									></i>
+									></i>{' '}
+									&nbsp;Cart
 								</Nav.Link>
 							</LinkContainer>
 						</Nav>
