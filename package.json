@@ -1,0 +1,22 @@
+{
+  "name": "gizmo-shop",
+  "version": "1.0.0",
+  "description": "MERN showcase full-stack ecommerce site with, authentication, user profile, and admin sections",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrettBedarf/gizmoshop-mern.git"
+  },
+  "author": "Brett Bedarf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrettBedarf/gizmoshop-mern/issues"
+  },
+  "homepage": "https://github.com/BrettBedarf/gizmoshop-mern#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
