@@ -16,7 +16,7 @@ const ProductScreen = ({ match }) => {
 			);
 			setProduct(data);
 		})();
-	});
+	}, [match.params.id]);
 
 	let inStock = product.countInStock === 0 ? false : true;
 
