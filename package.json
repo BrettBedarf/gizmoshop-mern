@@ -1,23 +1,30 @@
 {
-  "name": "gizmo-shop",
-  "version": "1.0.0",
-  "description": "MERN showcase full-stack ecommerce site with, authentication, user profile, and admin sections",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BrettBedarf/gizmoshop-mern.git"
-  },
-  "author": "Brett Bedarf",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BrettBedarf/gizmoshop-mern/issues"
-  },
-  "homepage": "https://github.com/BrettBedarf/gizmoshop-mern#readme",
-  "dependencies": {
-    "axios": "^0.21.0",
-    "express": "^4.17.1"
-  }
+	"name": "gizmo-shop",
+	"version": "1.0.0",
+	"description": "MERN showcase full-stack ecommerce site with, authentication, user profile, and admin sections",
+	"main": "server.js",
+	"scripts": {
+		"start": "node backend/server",
+		"server": "nodemon backend/server",
+		"client": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/BrettBedarf/gizmoshop-mern.git"
+	},
+	"author": "Brett Bedarf",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/BrettBedarf/gizmoshop-mern/issues"
+	},
+	"homepage": "https://github.com/BrettBedarf/gizmoshop-mern#readme",
+	"dependencies": {
+		"axios": "^0.21.0",
+		"express": "^4.17.1"
+	},
+	"devDependencies": {
+		"concurrently": "^5.3.0",
+		"nodemon": "^2.0.6"
+	}
 }

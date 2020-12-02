@@ -25,7 +25,7 @@ const QuantitySelector = props => {
 
 	function decrementQuantity(e) {
 		if (props.currentQuantity > 0) {
-			let newQuantity = props.currentQuantity - 1 || 0;
+			let newQuantity = props.currentQuantity - 1 || 1;
 			props.setQuantity(newQuantity);
 		}
 	}
