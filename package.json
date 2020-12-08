@@ -3,9 +3,10 @@
 	"version": "1.0.0",
 	"description": "MERN showcase full-stack ecommerce site with, authentication, user profile, and admin sections",
 	"main": "server.js",
+	"type": "module",
 	"scripts": {
 		"start": "node backend/server",
-		"server": "nodemon backend/server",
+		"server": "nodemon --inspect backend/server",
 		"client": "npm start --prefix frontend",
 		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
@@ -21,6 +22,7 @@
 	"homepage": "https://github.com/BrettBedarf/gizmoshop-mern#readme",
 	"dependencies": {
 		"axios": "^0.21.0",
+		"dotenv": "^8.2.0",
 		"express": "^4.17.1"
 	},
 	"devDependencies": {
