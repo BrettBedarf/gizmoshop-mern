@@ -23,8 +23,12 @@
 	"dependencies": {
 		"axios": "^0.21.0",
 		"dotenv": "^8.2.0",
+<<<<<<< HEAD
 		"express": "^4.17.1",
 		"mongoose": "^5.11.5"
+=======
+		"express": "^4.17.1"
+>>>>>>> 14a387ca7011928f261fba8a37fee4292ecbb90c
 	},
 	"devDependencies": {
 		"concurrently": "^5.3.0",
