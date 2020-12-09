@@ -5,6 +5,13 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "scratchpad",
+			"program": "${workspaceFolder}/scratchpad.js",
+			"request": "launch",
+			"skipFiles": ["<node_internals>/**"],
+			"type": "pwa-node"
+		},
+		{
 			"name": "Attach to Chrome",
 			"url": "http://localhost:3000",
 			"request": "attach",
