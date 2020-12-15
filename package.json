@@ -1,37 +1,42 @@
 {
-	"name": "gizmo-shop",
-	"version": "1.0.0",
-	"description": "MERN showcase full-stack ecommerce site with, authentication, user profile, and admin sections",
-	"main": "server.js",
-	"type": "module",
-	"scripts": {
-		"start": "node backend/server",
-		"server": "nodemon --inspect backend/server",
-		"client": "npm start --prefix frontend",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/BrettBedarf/gizmoshop-mern.git"
-	},
-	"author": "Brett Bedarf",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/BrettBedarf/gizmoshop-mern/issues"
-	},
-	"homepage": "https://github.com/BrettBedarf/gizmoshop-mern#readme",
-	"dependencies": {
-		"axios": "^0.21.0",
-		"dotenv": "^8.2.0",
-<<<<<<< HEAD
-		"express": "^4.17.1",
-		"mongoose": "^5.11.5"
-=======
-		"express": "^4.17.1"
->>>>>>> 14a387ca7011928f261fba8a37fee4292ecbb90c
-	},
-	"devDependencies": {
-		"concurrently": "^5.3.0",
-		"nodemon": "^2.0.6"
-	}
+  "name": "gizmo-shop",
+  "version": "1.0.0",
+  "description": "MERN showcase full-stack ecommerce site with, authentication, user profile, and admin sections",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon --inspect backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrettBedarf/gizmoshop-mern.git"
+  },
+  "author": "Brett Bedarf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrettBedarf/gizmoshop-mern/issues"
+  },
+  "homepage": "https://github.com/BrettBedarf/gizmoshop-mern#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.5",
+    "react": "^17.0.1",
+    "react-scripts": "^4.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^17.0.1",
+    "react-is": "^17.0.1",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.2.1",
+    "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
 }
