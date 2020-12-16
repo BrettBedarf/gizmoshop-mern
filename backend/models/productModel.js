@@ -58,7 +58,7 @@ const productSchema = mongoose.Schema(
 			required: true,
 			//store as cents
 			set: num => num * 100,
-			//convert to formatted number to 2 decimal places when retrieving
+			//convert to formatted price in cents to number with 2 decimal places when retrieving
 			get: num => (num / 100).toFixed(2),
 		},
 		countInStock: {
