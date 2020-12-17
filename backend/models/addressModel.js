@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import State from './State';
+import State from './stateModel.js';
 
 const addressSchema = mongoose.Schema({
   user: {
@@ -31,6 +31,6 @@ function streetLineLimit(val) {
   return val <= 4;
 }
 
-const Address = mongoose.Model('Address', addressSchema);
+const Address = mongoose.model('Address', addressSchema);
 
 export default Address;

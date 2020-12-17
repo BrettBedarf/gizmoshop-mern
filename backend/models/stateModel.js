@@ -11,6 +11,6 @@ const stateSchema = mongoose.Schema({
   },
 });
 
-const State = mongoose.Model('State', stateSchema);
+const State = mongoose.model('State', stateSchema);
 
 export default State;

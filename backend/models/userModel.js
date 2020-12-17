@@ -12,9 +12,10 @@ const userSchema = mongoose.Schema(
       unique: true,
     },
     password: {
+      //doesn't need to be required because might not have is using OAuth
       type: String,
-      required: true,
     },
+    googleId: String,
     defaultShipAddr: mongoose.Schema.Types.ObjectId,
     defaultBillAddr: mongoose.Schema.Types.ObjectId,
     isAdmin: {

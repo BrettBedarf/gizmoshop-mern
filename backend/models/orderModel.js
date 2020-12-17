@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Address from './Address';
+import Address from './addressModel.js';
 
 const orderItem = mongoose.Schema({
   product: {
@@ -23,12 +23,12 @@ const orderSchema = mongoose.Schema(
       required: true,
     },
     addrShip: {
-      type: Address,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
 
     addrBill: {
-      type: Address,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
     orderPhone: {
@@ -75,7 +75,7 @@ const orderSchema = mongoose.Schema(
     },
     paymentMethod: {
       type: String,
-      required: True,
+      required: true,
     },
     paymentResult: {
       id: String,
@@ -85,7 +85,7 @@ const orderSchema = mongoose.Schema(
     },
     isPaid: {
       type: Boolean,
-      required: True,
+      required: true,
       default: false,
     },
     paidTime: Date,
@@ -104,6 +104,6 @@ const orderSchema = mongoose.Schema(
   }
 );
 
-const Order = mongoose.model('User', userSchema);
+const Order = mongoose.model('Order', orderSchema);
 
 export default Order;

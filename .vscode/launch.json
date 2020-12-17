@@ -5,6 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "seeder",
+      "program": "${workspaceFolder}/backend/seeder.js",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node"
+    },
+
+    {
       "name": "server launch",
       "program": "${workspaceFolder}/backend/server.js",
       "request": "launch",
