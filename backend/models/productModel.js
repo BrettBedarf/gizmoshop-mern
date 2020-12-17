@@ -1,4 +1,8 @@
 import mongoose from 'mongoose';
+import {
+  convertDollarsToCents as dollarsToCents,
+  convertCentsToDollars as centsToDollars,
+} from '../utilities.js';
 
 const reviewSchema = mongoose.Schema(
   {
@@ -57,9 +61,9 @@ const productSchema = mongoose.Schema(
       type: Number,
       required: true,
       //store as cents
-      set: (num) => num * 100,
+      set: dollarsToCents,
       //convert to formatted price in cents to number with 2 decimal places when retrieving
-      get: (num) => (num / 100).toFixed(2),
+      get: centsToDollars,
     },
     countInStock: {
       type: Number,
@@ -75,7 +79,7 @@ const productSchema = mongoose.Schema(
       type: [reviewSchema],
     },
   },
-  { timestamps: true }
+  { timestamps: true, toObject: { getters: true }, toJSON: { getters: true } }
 );
 
 const Product = mongoose.model('Product', productSchema);
