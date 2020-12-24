@@ -13,6 +13,7 @@ const handleError = (err, req, res, next) => {
     message: err.message,
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
   });
+  //doesn't need to call next() because response already sent
 };
 
 export { notFound, handleError };
