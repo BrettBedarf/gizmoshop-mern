@@ -78,6 +78,8 @@ const productSchema = mongoose.Schema(
     reviews: {
       type: [reviewSchema],
     },
+    rating: Number,
+    numReviews: Number,
   },
   { timestamps: true, toObject: { getters: true }, toJSON: { getters: true } }
 );
