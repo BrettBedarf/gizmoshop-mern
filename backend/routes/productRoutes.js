@@ -26,7 +26,7 @@ router.get(
     const reqId = req.params.id;
     if (mongoose.Types.ObjectId.isValid(reqId)) {
       const product = await Product.findById({ _id: reqId });
-      //product found if has an id
+      //product found if it has an id
       if (product.id) {
         res.json(product);
       } else {
