@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
 import { listProducts } from '../actions/productActions';
 
 const HomeScreen = () => {
@@ -20,9 +22,9 @@ const HomeScreen = () => {
       {/* display loading while waiting for products to lead or error. 
           if successfull display latest products*/}
       {loading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <h3>{error}</h3>
+        <Message variant="danger">{error}</Message>
       ) : (
         <Row>
           {products.map((product) => (
