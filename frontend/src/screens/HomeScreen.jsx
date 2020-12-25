@@ -7,25 +7,31 @@ import { listProducts } from '../actions/productActions';
 const HomeScreen = () => {
   //get redux dispatch function
   const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
-  function getState(state) {
-    return state.productList.products;
-  }
-  const products = useSelector(getState);
 
   return (
     <>
       <h1>Latest Products</h1>
-      <Row>
-        {products.map((product) => (
-          <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-            <ProductCard product={product} />
-          </Col>
-        ))}
-      </Row>
+      {/* display loading while waiting for products to lead or error. 
+          if successfull display latest products*/}
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        <Row>
+          {products.map((product) => (
+            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+              <ProductCard product={product} />
+            </Col>
+          ))}
+        </Row>
+      )}
     </>
   );
 };
