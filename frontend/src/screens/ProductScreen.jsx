@@ -9,6 +9,9 @@ import {
   listProductDetails,
   clearProductDetails,
 } from '../actions/productActions';
+import {
+  addToCart
+} from '../actions/cartActions';
 
 import QuantitySelector from '../components/QuantitySelector';
 
@@ -17,6 +20,7 @@ const ProductScreen = ({ match }) => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+  const maxQty = product.countInStock;
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
@@ -30,6 +34,10 @@ const ProductScreen = ({ match }) => {
   if (product) {
     //product won't exist if there's an error fetching
     inStock = product.countInStock === 0 ? false : true;
+  }
+
+  const addToCartHandler = (e) => {
+    dispatch(addToCart())
   }
 
   return (
@@ -68,11 +76,13 @@ const ProductScreen = ({ match }) => {
                   <QuantitySelector
                     currentQuantity={quantity}
                     setQuantity={setQuantity}
-                  />
+                        />
+                      )} {inStock && quantity === maxQty && (
+                      <span><i>Max quantity available is {maxQty}</i></span>
                 )}
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button block disabled={!inStock ? true : false}>
+                <Button block disabled={!inStock ? true : false} onClick={addToCartHandler}>
                   {' '}
                   Add To Cart
                 </Button>
