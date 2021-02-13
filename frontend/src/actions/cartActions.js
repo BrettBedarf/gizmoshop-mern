@@ -2,15 +2,14 @@ import {
   CART_ADD_REQUEST,
   CART_ADD_SUCCESS,
   CART_ADD_FAIL,
+  CART_UPDATE_ITEM,
+  CART_UPDATE_FAIL,
 } from '../constants/cartConstants';
 
 // PLACEHOLDER so don't have to setup db calls yet
 let isLoggedIn = false;
 
-export const addToCart = (productDetails, qty) => async (
-  dispatch,
-  getState
-) => {
+const addToCart = (productDetails, qty) => async (dispatch, getState) => {
   try {
     /*  If user is logged in, we want to persist the cart
         in db and should update state as requesting before sending 
@@ -38,10 +37,7 @@ export const addToCart = (productDetails, qty) => async (
     });
 
     //save current cart state to local storage
-    localStorage.setItem(
-      'cartItems',
-      JSON.stringify(getState().cart.cartItems)
-    );
+    saveToStorage(getState);
   } catch (error) {
     dispatch({
       type: CART_ADD_FAIL,
@@ -52,3 +48,30 @@ export const addToCart = (productDetails, qty) => async (
     });
   }
 };
+
+const updateQuantity = (productId, qty) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CART_UPDATE_ITEM,
+      payload: {
+        productId: productId,
+        qty: qty,
+      },
+    });
+    saveToStorage(getState);
+  } catch (error) {
+    dispatch({
+      type: CART_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+const saveToStorage = (getState) => {
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+};
+
+export { addToCart, updateQuantity };

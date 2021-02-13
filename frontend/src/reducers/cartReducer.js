@@ -2,6 +2,7 @@ import {
   CART_ADD_REQUEST,
   CART_ADD_SUCCESS,
   CART_ADD_FAIL,
+  CART_UPDATE_ITEM,
 } from '../constants/cartConstants';
 
 export const cartReducer = (
@@ -31,6 +32,17 @@ export const cartReducer = (
           [productId]: { ...details, qtyInCart: newQtyInCart },
         },
       };
+
+    case CART_UPDATE_ITEM:
+      const { productId: updateId, qty } = action.payload;
+      return {
+        ...state,
+        cartItems: {
+          ...state.cartItems,
+          [updateId]: { ...state.cartItems[updateId], qtyInCart: qty },
+        },
+      };
+
     default:
       return state;
   }
