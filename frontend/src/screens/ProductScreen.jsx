@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
@@ -16,17 +16,21 @@ import QuantitySelector from '../components/QuantitySelector';
 const ProductScreen = ({ match }) => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const history = useHistory();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-  const maxQty = product.countInStock;
+  const maxQty = product ? product.countInStock : 0;
 
   useEffect(() => {
-    dispatch(listProductDetails(match.params.id));
+    if (!product.id || product.id !== match.params.id) {
+      dispatch(listProductDetails(match.params.id));
+    }
     //clear product from state on unmount
     return () => {
       dispatch(clearProductDetails());
     };
-  }, [match, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, match]);
 
   let inStock;
   if (product) {
@@ -36,6 +40,7 @@ const ProductScreen = ({ match }) => {
 
   const addToCartHandler = (e) => {
     dispatch(addToCart(product, quantity));
+    history.push('/cart');
   };
 
   return (

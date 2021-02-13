@@ -7,7 +7,10 @@ import {
 // PLACEHOLDER so don't have to setup db calls yet
 let isLoggedIn = false;
 
-export const addToCart = (productDetails, qty) => async (dispatch) => {
+export const addToCart = (productDetails, qty) => async (
+  dispatch,
+  getState
+) => {
   try {
     /*  If user is logged in, we want to persist the cart
         in db and should update state as requesting before sending 
@@ -33,6 +36,12 @@ export const addToCart = (productDetails, qty) => async (dispatch) => {
         qty: qty,
       },
     });
+
+    //save current cart state to local storage
+    localStorage.setItem(
+      'cartItems',
+      JSON.stringify(getState().cart.cartItems)
+    );
   } catch (error) {
     dispatch({
       type: CART_ADD_FAIL,
