@@ -79,6 +79,7 @@ const ProductScreen = ({ match }) => {
                   <QuantitySelector
                     currentQuantity={quantity}
                     setQuantity={setQuantity}
+                    maxQty={maxQty}
                   />
                 )}{' '}
                 {inStock && quantity === maxQty && (

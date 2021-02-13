@@ -14,10 +14,10 @@ const StyleWrapper = styled.div`
 `;
 
 const QuantitySelector = (props) => {
-  const qtyInStock = useSelector(
-    (state) => state.productDetails.product.countInStock
-  );
-
+  // const qtyInStock = useSelector(
+  //   (state) => state.productDetails.product.countInStock
+  // );
+  const qtyInStock = props.maxQty;
   function incrementQuantity(e) {
     let newQuantity;
     //treat falsy as 0
