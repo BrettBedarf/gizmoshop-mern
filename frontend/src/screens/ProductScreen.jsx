@@ -9,9 +9,7 @@ import {
   listProductDetails,
   clearProductDetails,
 } from '../actions/productActions';
-import {
-  addToCart
-} from '../actions/cartActions';
+import { addToCart } from '../actions/cartActions';
 
 import QuantitySelector from '../components/QuantitySelector';
 
@@ -37,8 +35,8 @@ const ProductScreen = ({ match }) => {
   }
 
   const addToCartHandler = (e) => {
-    dispatch(addToCart())
-  }
+    dispatch(addToCart(product, quantity));
+  };
 
   return (
     <>
@@ -76,13 +74,20 @@ const ProductScreen = ({ match }) => {
                   <QuantitySelector
                     currentQuantity={quantity}
                     setQuantity={setQuantity}
-                        />
-                      )} {inStock && quantity === maxQty && (
-                      <span><i>Max quantity available is {maxQty}</i></span>
+                  />
+                )}{' '}
+                {inStock && quantity === maxQty && (
+                  <span>
+                    <i>Max quantity available is {maxQty}</i>
+                  </span>
                 )}
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button block disabled={!inStock ? true : false} onClick={addToCartHandler}>
+                <Button
+                  block
+                  disabled={!inStock ? true : false}
+                  onClick={addToCartHandler}
+                >
                   {' '}
                   Add To Cart
                 </Button>
