@@ -4,6 +4,9 @@ import {
   CART_ADD_FAIL,
   CART_UPDATE_ITEM,
   CART_UPDATE_FAIL,
+  CART_REMOVE_ITEM,
+  CART_CLEAR_ITEMS,
+  CART_REMOVE_FAIL,
 } from '../constants/cartConstants';
 
 // PLACEHOLDER so don't have to setup db calls yet
@@ -70,8 +73,28 @@ const updateQuantity = (productId, qty) => async (dispatch, getState) => {
   }
 };
 
+const removeItem = (itemId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: CART_REMOVE_ITEM, payload: itemId });
+    saveToStorage(getState);
+  } catch (error) {
+    dispatch({
+      type: CART_REMOVE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+const clearCart = () => async (dispatch, getState) => {
+  dispatch({ type: CART_CLEAR_ITEMS });
+  saveToStorage(getState);
+};
+
 const saveToStorage = (getState) => {
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
 };
 
-export { addToCart, updateQuantity };
+export { addToCart, updateQuantity, clearCart, removeItem };

@@ -3,6 +3,9 @@ import {
   CART_ADD_SUCCESS,
   CART_ADD_FAIL,
   CART_UPDATE_ITEM,
+  CART_REMOVE_ITEM,
+  CART_CLEAR_ITEMS,
+  CART_REMOVE_FAIL,
 } from '../constants/cartConstants';
 
 export const cartReducer = (
@@ -41,6 +44,19 @@ export const cartReducer = (
           ...state.cartItems,
           [updateId]: { ...state.cartItems[updateId], qtyInCart: qty },
         },
+      };
+    case CART_REMOVE_ITEM:
+      const deleteId = action.payload;
+      const cartItemsCopy = JSON.parse(JSON.stringify(state.cartItems));
+      delete cartItemsCopy[deleteId];
+      return {
+        ...state,
+        cartItems: { ...cartItemsCopy },
+      };
+    case CART_CLEAR_ITEMS:
+      return {
+        ...state,
+        cartItems: {},
       };
 
     default:
