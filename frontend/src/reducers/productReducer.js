@@ -5,6 +5,7 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
+  PRODUCT_DETAILS_CLEAR,
 } from '../constants/productConstants.js';
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -32,7 +33,7 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
     case PRODUCT_DETAILS_FAIL:
       //action will send error message as payload if failed
       return { loading: false, error: action.payload };
-    case 'CLEAR_PRODUCT_DETAILS':
+    case PRODUCT_DETAILS_CLEAR:
       return { loading: false, product: {} };
     default:
       return state;
