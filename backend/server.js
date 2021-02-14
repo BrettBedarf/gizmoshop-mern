@@ -1,10 +1,9 @@
 import dotenv from 'dotenv';
-import products from './data/products.js';
 import connectDB from './config/db.js';
 import express from 'express';
-import mongoose from 'mongoose';
 
 import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import { notFound, handleError } from './middleware/errorMiddleware.js';
 
 //startup
@@ -12,7 +11,12 @@ dotenv.config();
 connectDB();
 const app = express();
 
+// Middleware to be able to use json
+app.use(express.json());
+
+// Attach api routes
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 //handle 404
 app.use(notFound);
