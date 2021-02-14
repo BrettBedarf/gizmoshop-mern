@@ -34,10 +34,6 @@ export default function CartScreen() {
     return acc + parseFloat(price) * qty;
   };
 
-  const calcItemSubtotal = (itemId) => {
-    const { price, qtyInCart } = cartItems[itemId];
-    return parseFloat(price) * qtyInCart;
-  };
   return (
     <>
       <h1>Shopping Cart</h1>
