@@ -51,9 +51,6 @@ const QuantitySelector = (props) => {
 
   return (
     <StyleWrapper>
-      <p>
-        <label htmlFor="qty-input">Quantity</label>
-      </p>
       <Adjuster
         icon="/images/decrease.png"
         adjustHandler={decrementQuantity}
