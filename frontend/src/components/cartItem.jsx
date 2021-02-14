@@ -45,7 +45,7 @@ export default function CartItem(props) {
         <Image
           src="./images/removeIcon.png"
           className="ml-auto"
-          style={{ width: '.5rem', height: '.5rem' }}
+          style={{ width: '.7rem', height: '.7rem', cursor: 'pointer' }}
           onClick={handleRemoveButton}
         ></Image>
       </Col>
