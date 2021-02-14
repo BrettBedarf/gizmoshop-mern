@@ -6,17 +6,30 @@ import {
   productDetailsReducer,
 } from './reducers/productReducer.js';
 import { cartReducer } from './reducers/cartReducer';
-
-const cartItemsFromStorage = localStorage.getItem('cartItems')
-  ? JSON.parse(localStorage.getItem('cartItems'))
-  : [];
+import { userLoginReducer } from './reducers/userReducer';
 
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  user: userLoginReducer,
 });
-const initialState = { cart: { cartItems: cartItemsFromStorage } }; //initial state when store loads
+
+// Load session state from local torage
+const cartItemsFromStorage = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : [];
+const userInfoFromStorage = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : null;
+
+// Set initial state when store loads
+const initialState = {
+  cart: { cartItems: cartItemsFromStorage },
+  user: {
+    userInfo: userInfoFromStorage,
+  },
+};
 const middleware = [Thunk];
 
 const store = createStore(
