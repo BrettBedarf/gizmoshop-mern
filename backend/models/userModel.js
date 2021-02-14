@@ -32,6 +32,18 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
+userSchema.pre('save', async function (next) {
+  // Will also run when updating profile, but only want to rehash if
+  // the password field is being updated. Otherwise wouldn't be able to login
+  // after updating something else like name.
+  if (!this.isModified('password')) {
+    next();
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
 const User = mongoose.model('User', userSchema);
 
 export default User;
