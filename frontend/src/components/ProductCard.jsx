@@ -13,7 +13,9 @@ const ProductCard = ({ product }) => {
         <Card.Body>
           <Link to={`/product/${product._id}`}>
             <Card.Title as="div">
-              <strong>{product.name}</strong>
+              <h5>
+                <strong>{product.name}</strong>
+              </h5>
             </Card.Title>
           </Link>
           <Card.Text as="div">
@@ -32,7 +34,7 @@ const ProductCard = ({ product }) => {
               }
             />
           </Card.Text>
-          <Card.Text as="h3">${product.price}</Card.Text>
+          <Card.Text as="h4">${product.price}</Card.Text>
         </Card.Body>
       </Card>
     </>

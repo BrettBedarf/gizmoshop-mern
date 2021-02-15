@@ -18,7 +18,7 @@ const HomeScreen = () => {
 
   return (
     <>
-      <h1>Latest Products</h1>
+      <h4>Hot Products</h4>
       {/* display loading while waiting for products to lead or error. 
           if successfull display latest products*/}
       {loading ? (

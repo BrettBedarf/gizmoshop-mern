@@ -36,7 +36,7 @@ export default function CartScreen() {
 
   return (
     <>
-      <h1>Shopping Cart</h1>
+      <h4>Shopping Cart</h4>
       {cartListItems.length === 0 ? (
         <Message>
           You're cart is empty!{'    '}

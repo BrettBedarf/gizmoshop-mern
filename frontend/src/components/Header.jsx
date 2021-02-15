@@ -26,11 +26,11 @@ const Header = () => {
               <img
                 src={logo}
                 alt=""
-                width="30"
-                height="30"
+                width="45"
+                height="45"
                 className="d-inline-block align-top"
               />
-              &nbsp;Gidgets
+              <h3 style={{ display: 'inline-block' }}>&nbsp;Gidgets</h3>
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls=".navbar-toggle" />
@@ -39,19 +39,11 @@ const Header = () => {
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <NavDropdown title="Categories" className="navbar-toggle">
-                <NavDropdown.Item href="#action/3.1">
-                  Category 1
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Category 2
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Category 3
-                </NavDropdown.Item>
+                <NavDropdown.Item href="/">Useless</NavDropdown.Item>
+                <NavDropdown.Item href="/">Phone</NavDropdown.Item>
+                <NavDropdown.Item href="/">Accessories</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  All Products
-                </NavDropdown.Item>
+                <NavDropdown.Item href="#/">All Products</NavDropdown.Item>
               </NavDropdown>
               <LinkContainer to="/about">
                 <Nav.Link href="#link">About</Nav.Link>
