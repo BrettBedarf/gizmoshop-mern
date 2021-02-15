@@ -28,13 +28,14 @@ const protect = (req, res, next) => {
   next();
 };
 
-const admin = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
+const admin = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.decodedToken.id);
+  if (user && user.isAdmin) {
     next();
   } else {
     res.status(401);
     throw new Error('Not authorized as an admin');
   }
-};
+});
 
 export { protect, admin };
