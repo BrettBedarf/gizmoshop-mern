@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import users from './data/users.js';
@@ -13,38 +14,44 @@ connectDB();
 
 const importData = async () => {
   try {
-    let adminUser;
-    const usersInserted = await User.insertMany(users);
-    console.log(`Successfully inserted users`.green.inverse);
-    adminUser = usersInserted[0]._id;
-    //add admin user to all products
+    await Order.deleteMany();
+    await Product.deleteMany();
+    await User.deleteMany();
+
+    const createdUsers = await User.insertMany(users);
+
+    const adminUser = createdUsers[0]._id;
+
     const sampleProducts = products.map((product) => {
       return { ...product, user: adminUser };
     });
+
     await Product.insertMany(sampleProducts);
-    console.log('Successfully inserted products'.green.inverse);
+
+    console.log('Data Imported!'.green.inverse);
     process.exit();
-  } catch (err) {
-    console.error(`Error importing data ${err}`.red.inverse);
+  } catch (error) {
+    console.error(`${error}`.red.inverse);
     process.exit(1);
   }
 };
 
-const destroyData = () => {
-  //delete all existing data
-  Promise.allSettled([
-    Order.deleteMany(),
-    Product.deleteMany(),
-    User.deleteMany(),
-  ])
-    .then((values) => {
-      console.log('Succesfully deleted existing data'.green.inverse);
-      process.exit();
-    })
-    .catch((err) => {
-      console.error(`Error deleting existing data ${err}`.red.inverse);
-      process.exit();
-    });
+const destroyData = async () => {
+  try {
+    await Order.deleteMany();
+    await Product.deleteMany();
+    await User.deleteMany();
+
+    console.log('Data Destroyed!'.red.inverse);
+    process.exit();
+  } catch (error) {
+    console.error(`${error}`.red.inverse);
+    process.exit(1);
+  }
 };
 
-process.argv[2] === '-d' ? destroyData() : importData();
+if (process.argv[2] === '-d') {
+  destroyData();
+} else {
+  importData();
+}
