@@ -4,6 +4,7 @@ import express from 'express';
 
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 import { notFound, handleError } from './middleware/errorMiddleware.js';
 
 //startup
@@ -17,6 +18,7 @@ app.use(express.json());
 // Attach api routes
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
 
 //handle 404
 app.use(notFound);
