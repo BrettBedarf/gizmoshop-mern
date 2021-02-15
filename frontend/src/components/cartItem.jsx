@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Image } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import QuantitySelector from './QuantitySelector';
 import { formatMoney } from '../utilities';
 import { updateQuantity, removeItem } from '../actions/cartActions';
