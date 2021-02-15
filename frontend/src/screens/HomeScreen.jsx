@@ -4,6 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import ProductCarousel from '../components/ProductCarousel';
 import { listProducts } from '../actions/productActions';
 
 const HomeScreen = () => {
@@ -18,6 +19,7 @@ const HomeScreen = () => {
 
   return (
     <>
+      <ProductCarousel />
       <h4>Hot Products</h4>
       {/* display loading while waiting for products to lead or error. 
           if successfull display latest products*/}

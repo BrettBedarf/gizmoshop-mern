@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   productListReducer,
   productDetailsReducer,
+  productTopRatedReducer,
 } from './reducers/productReducer.js';
 import { cartReducer } from './reducers/cartReducer';
 import {
@@ -35,6 +36,7 @@ const reducer = combineReducers({
   orderDeliver: orderDeliverReducer,
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
+  productTopRated: productTopRatedReducer,
 });
 
 // Load session state from local torage
