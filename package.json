@@ -2,6 +2,9 @@
   "name": "gizmo-shop",
   "version": "1.0.0",
   "description": "MERN showcase full-stack ecommerce site with, authentication, user profile, and admin sections",
+  "engines": {
+    "node": "14.x"
+  },
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -10,7 +13,8 @@
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d"
+    "data:destroy": "node backend/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --only=dev && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",

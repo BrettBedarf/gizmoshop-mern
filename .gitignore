@@ -7,7 +7,7 @@
 ## Custom ##
 .vscode/
 theme/
-frontend/build/
+/frontend/build/
 
 ### Node ###
 # Logs
