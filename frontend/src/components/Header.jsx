@@ -72,9 +72,7 @@ const Header = () => {
                   id="basic-nav-dropdown"
                 >
                   <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="/order-history">
-                    Order History
-                  </NavDropdown.Item>
+
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={handleLogout}>
                     Log Out
