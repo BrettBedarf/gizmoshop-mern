@@ -7,6 +7,7 @@ import {
   CART_REMOVE_ITEM,
   CART_CLEAR_ITEMS,
   CART_REMOVE_FAIL,
+  CART_SAVE_SHIPPING_ADDRESS,
 } from '../constants/cartConstants';
 
 // PLACEHOLDER so don't have to setup db calls yet
@@ -91,6 +92,15 @@ const removeItem = (itemId) => async (dispatch, getState) => {
 const clearCart = () => async (dispatch, getState) => {
   dispatch({ type: CART_CLEAR_ITEMS });
   saveToStorage(getState);
+};
+
+export const saveShippingAddress = (data) => (dispatch) => {
+  dispatch({
+    type: CART_SAVE_SHIPPING_ADDRESS,
+    payload: data,
+  });
+
+  localStorage.setItem('shippingAddress', JSON.stringify(data));
 };
 
 const saveToStorage = (getState) => {
