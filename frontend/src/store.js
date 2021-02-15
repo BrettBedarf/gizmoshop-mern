@@ -6,13 +6,14 @@ import {
   productDetailsReducer,
 } from './reducers/productReducer.js';
 import { cartReducer } from './reducers/cartReducer';
-import { userLoginReducer } from './reducers/userReducer';
+import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
 
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
-  user: userLoginReducer,
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 });
 
 // Load session state from local torage
@@ -26,7 +27,7 @@ const userInfoFromStorage = localStorage.getItem('userInfo')
 // Set initial state when store loads
 const initialState = {
   cart: { cartItems: cartItemsFromStorage },
-  user: {
+  userLogin: {
     userInfo: userInfoFromStorage,
   },
 };

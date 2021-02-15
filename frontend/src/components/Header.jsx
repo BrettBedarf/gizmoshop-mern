@@ -9,7 +9,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo } = useSelector((state) => state.userLogin);
 
   const handleLogout = () => {
     dispatch(logout());
