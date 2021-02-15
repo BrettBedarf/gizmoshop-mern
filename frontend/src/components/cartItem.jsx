@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Image } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import QuantitySelector from './QuantitySelector';
 import { formatMoney } from '../utilities';
 import { updateQuantity, removeItem } from '../actions/cartActions';
@@ -20,10 +21,14 @@ export default function CartItem(props) {
   return (
     <Row className="align-items-center justify-content-between">
       <Col xs={3} md={2} className="align-items-center">
-        <Image src={image} fluid />
+        <Link to={`/product/${_id}`}>
+          <Image src={image} fluid />
+        </Link>
       </Col>
       <Col xs={9} md={3}>
-        <h6>{name}</h6>
+        <Link to={`/product/${_id}`}>
+          <h6>{name}</h6>
+        </Link>
       </Col>
       <Col
         xs={5}
