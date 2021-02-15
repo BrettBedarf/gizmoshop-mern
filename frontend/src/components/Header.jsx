@@ -1,8 +1,21 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { logout } from '../actions/userActions';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const { userInfo } = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    history.push('/login');
+  };
+
   return (
     <header>
       <Navbar bg="white" variant="light" collapseOnSelect expand="md">
@@ -16,7 +29,7 @@ const Header = () => {
                 height="30"
                 className="d-inline-block align-top"
               />
-              &nbsp;GizmoShop
+              &nbsp;Gidgets
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls=".navbar-toggle" />
@@ -47,11 +60,35 @@ const Header = () => {
 
           <Navbar.Collapse className="navbar-toggle">
             <Nav className="ml-auto">
-              <LinkContainer to="/login">
-                <Nav.Link>
-                  <i className="fas fa-user"></i> &nbsp;Sign In
-                </Nav.Link>
-              </LinkContainer>
+              {userInfo ? (
+                <NavDropdown
+                  title={
+                    <span>
+                      <i className="fas fa-user"></i>
+                      &nbsp;&nbsp;{userInfo.name}
+                    </span>
+                  }
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item href="/order-history">
+                    Order History
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item onClick={handleLogout}>
+                    Log Out
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <>
+                  <LinkContainer to={userInfo ? '/profile' : '/login'}>
+                    <Nav.Link>
+                      <i className="fas fa-user"></i> &nbsp;
+                      {userInfo ? userInfo.name : 'Sign In'}
+                    </Nav.Link>
+                  </LinkContainer>
+                </>
+              )}
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fa fa-shopping-cart" aria-hidden="true"></i>{' '}
