@@ -4,6 +4,7 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../actions/userActions';
+import logo from '../assets/logo-lg.png';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Header = () => {
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
-                src="./images/logo-lg.png"
+                src={logo}
                 alt=""
                 width="30"
                 height="30"
